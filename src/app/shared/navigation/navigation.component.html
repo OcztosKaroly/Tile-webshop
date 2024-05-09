@@ -1,0 +1,38 @@
+<mat-nav-list>
+    <ul>
+        <li [ngClass]="currentPage === 'shop' ? 'current_page' : ''" routerLink="/shop" (click)="close()">
+            <mat-icon>grid_view</mat-icon>
+            Bolt
+        </li>
+        <li [ngClass]="currentPage === 'cart' ? 'current_page' : ''" routerLink="/cart" (click)="close()">
+            <mat-icon>shopping_cart</mat-icon>
+            Kosár
+        </li>
+        <li *ngIf="loggedInUser">
+            <mat-icon>portrait</mat-icon>
+            <a [ngClass]="currentPage === 'settings' || currentPage === 'invoices' ? 'current_page' : ''">Profil</a>
+            <ul class="submenu">
+                <li [ngClass]="currentPage === 'settings' ? 'current_page' : ''" routerLink="/settings" (click)="close()">
+                    <mat-icon>settings</mat-icon>
+                    Profil szerkesztése
+                </li>
+                <li [ngClass]="currentPage === 'invoices' ? 'current_page' : ''" routerLink="/invoices" (click)="close()">
+                    <mat-icon>description</mat-icon>
+                    Számlák
+                </li>
+                <li routerLink="/logout" (click)="close(true)">
+                    <mat-icon>logout</mat-icon>
+                    Kijelentkezés
+                </li>
+            </ul>
+        </li>
+        <li *ngIf="!loggedInUser" [ngClass]="currentPage === 'login' ? 'current_page' : ''" routerLink="/login" (click)="close()">
+            <mat-icon>login</mat-icon>
+            Bejelentkezés
+        </li>
+        <li *ngIf="!loggedInUser" [ngClass]="currentPage === 'register' ? 'current_page' : ''" routerLink="/register" (click)="close()">
+            <mat-icon>app_registration</mat-icon>
+            Regisztráció
+        </li>
+    </ul>
+</mat-nav-list>

@@ -1,0 +1,64 @@
+<h1>Kosár</h1>
+<div class="table-container" *ngIf="cartItems.length > 0; else emptyCartText">
+    <table mat-table [dataSource]="cartItems" class="mat-elevation-z8">
+
+        <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef> Termék neve </th>
+            <td mat-cell *matCellDef="let item"> {{ item.name }} </td>
+        </ng-container>
+      
+        <ng-container matColumnDef="color">
+            <th mat-header-cell *matHeaderCellDef> Szín </th>
+            <td mat-cell *matCellDef="let item"> {{ item.color }} </td>
+        </ng-container>
+      
+        <ng-container matColumnDef="size">
+            <th mat-header-cell *matHeaderCellDef> Méret </th>
+            <td mat-cell *matCellDef="let item"> {{ item.size }} </td>
+        </ng-container>
+      
+        <ng-container matColumnDef="quantity">
+            <th mat-header-cell *matHeaderCellDef> Mennyiség </th>
+            <td mat-cell *matCellDef="let item; let i = index">
+                <mat-form-field>
+                    <mat-label>Mennyiség</mat-label>
+                    <input matInput type="number" [(ngModel)]="cartItemsCounts[i]" (blur)="onQuantityChange(i)" min="0">
+                </mat-form-field>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="price">
+            <th mat-header-cell *matHeaderCellDef> Ár </th>
+            <td mat-cell *matCellDef="let item"> {{ item.price | customCurrency }} </td>
+        </ng-container>
+      
+        <ng-container matColumnDef="total">
+            <th mat-header-cell *matHeaderCellDef> Összesen </th>
+            <td mat-cell *matCellDef="let item; let i = index"> {{ item.price * cartItemsCounts[i] | customCurrency }} </td>
+        </ng-container>
+      
+        <ng-container matColumnDef="delete">
+            <th mat-header-cell *matHeaderCellDef> Törlés </th>
+            <td mat-cell *matCellDef="let item; let i = index">
+                <button mat-icon-button (click)="delete(i)">
+                    <mat-icon>delete</mat-icon>
+                </button>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      
+    </table>
+</div>
+<div class="payment-section" *ngIf="cartItems.length > 0;">
+    <div class="total-price">
+        Összár: {{ getTotalPrice() | customCurrency }}
+    </div>
+    <button mat-raised-button color="warn" class="pay-button" (click)="purchase()">Fizetés</button>
+    <button mat-raised-button color="primary" (click)="clearCart()">Kosár ürítése</button>
+</div>
+
+<ng-template #emptyCartText>
+    <p class="info">Kiürült a kosáááár...</p>
+</ng-template>

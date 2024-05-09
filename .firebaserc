@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "webkeret-tiles-webshop": {
+      "hosting": {
+        "tile-webshop": [
+          "webkeret-tiles-webshop"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "webkeret-tiles-webshop"
+  }
+}

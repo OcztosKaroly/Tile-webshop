@@ -1,0 +1,31 @@
+.table-container {
+    overflow-x: auto; 
+    margin-bottom: 20px;
+}
+  
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.payment-section {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    margin-bottom: 20px;
+}
+  
+.total-price {
+    margin-right: 30px;
+}
+
+.pay-button {
+    margin-right: 20px;
+}
+
+.info {
+    font-size: 32px;
+    width: 100%;
+    text-align: center;
+}

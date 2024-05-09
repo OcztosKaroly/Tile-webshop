@@ -1,0 +1,41 @@
+.container-bordered {
+    border: 3px solid black;
+    padding: 0 40px 20px 40px;
+    border-radius: 15px;
+    width: 50%;
+    margin: auto;
+    text-align: center;
+}
+
+@media only screen and (max-width: 600px) {
+    .container-bordered {
+        width: auto;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}
+
+.container-left-align {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+a {
+    text-decoration: underline;
+    cursor: pointer;
+    color: orangered;
+}
+
+.centered {
+    margin: auto;
+    text-align: center;
+    padding: 10px;
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+button {
+    font-size: 120%;
+}

@@ -1,0 +1,34 @@
+<div class="container card-wrapper  " *ngIf="products && products.length > 0; else noProducts">
+    <div class="productCard" *ngFor="let product of products;">
+        <mat-card>
+            <mat-card-header>
+                <mat-card-title>
+                    {{product.name}}
+                </mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <div class="image">
+                    <img [src]="getProductImageUrl(product.id)" alt="Product Image">
+                </div>
+                <div>
+                    <p>Méret: {{ product.size }}</p>
+                    <p>Hova: {{ product.where }}</p>
+                    <p>Szín: {{ product.color }}</p>
+                    <p>Ár: {{ product.price | customCurrency }}</p>
+                    <p>Leírás: {{ product.description }}</p>
+                </div>
+            </mat-card-content>
+            <mat-card-actions>
+                <mat-form-field class="count_field">
+                    <mat-label>Mennyiség</mat-label>
+                    <input matInput id="{{product.id}}" type="number" value="1" min="0">
+                </mat-form-field>
+                <button mat-raised-button class="add_button" color="primary" (click)="addToCart(product.id)">Kosárhoz hozzáadás</button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+</div>
+    
+<ng-template #noProducts>
+    <p>Nincsenek termékek</p>
+</ng-template>

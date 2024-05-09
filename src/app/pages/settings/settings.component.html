@@ -1,0 +1,105 @@
+<div class="container-bordered">
+    <h1>Profil beállítása</h1>
+    
+    <form [formGroup]="settingsForm" (ngSubmit)="onSubmit()">
+        <div class="container-left-align" formGroupName="profile">
+            <h2 class="required">Profil adatok</h2>
+
+            <mat-form-field> 
+                <mat-label for="email">Email cím </mat-label>
+                <input matInput id="email" type="email" formControlName="email" required />
+            </mat-form-field>
+
+            <mat-form-field> 
+                <mat-label for="phone">Telefonszám </mat-label>
+                <input matInput id="phone" type="tel" formControlName="phone" required />
+            </mat-form-field>
+
+            <mat-label>Vásárló típus: </mat-label>
+            <mat-radio-group formControlName="customerType">
+                <mat-radio-button value="private">Magánszemély</mat-radio-button>
+                <mat-radio-button value="company">Cég</mat-radio-button>
+            </mat-radio-group>
+
+            <div *ngIf="settingsForm.get('profile.customerType')?.value === 'company'">
+                <mat-form-field> 
+                    <mat-label for="taxNumber">Cég esetén adószám </mat-label>
+                    <input matInput id="taxNumber" type="text" formControlName="taxNumber" required />
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="container-left-align" formGroupName="shipping">
+            <h2>Szállítási adatok</h2>
+
+            <mat-form-field> 
+                <mat-label for="shippingName">Név </mat-label>
+                <input matInput id="shippingName" type="text" formControlName="shippingName" required />
+            </mat-form-field>
+
+            <mat-form-field> 
+                <mat-label for="shippingCountry">Ország </mat-label>
+                <input matInput id="shippingCountry" type="text" formControlName="shippingCountry" required />
+            </mat-form-field>
+
+            <mat-form-field> 
+                <mat-label for="shippingPostnumber">Irányítószám </mat-label>
+                <input matInput id="shippingPostnumber" type="text" formControlName="shippingPostnumber" required />
+            </mat-form-field>
+
+            <mat-form-field> 
+                <mat-label for="shippingCity">Város </mat-label>
+                <input matInput id="shippingCity" type="text" formControlName="shippingCity" required />
+            </mat-form-field>
+
+            <mat-form-field> 
+                <mat-label for="shippingAddress">Utca, házszám </mat-label>
+                <input matInput id="shippingAddress" type="text" formControlName="shippingAddress" required />
+            </mat-form-field>
+        </div>
+
+        <div class="container-left-align" formGroupName="billing">
+            <h2>Számlázási adatok</h2>
+
+            <mat-checkbox formControlName="isBillingSameAsShipping">
+                <mat-label>Számlázási adatok megegyeznek a szállítási adatokkal.</mat-label> 
+            </mat-checkbox>
+
+            <div *ngIf="!settingsForm.get('billing.isBillingSameAsShipping')?.value">
+                <mat-form-field> 
+                    <mat-label for="billingName">Név </mat-label>
+                    <input matInput id="billingName" type="text" formControlName="billingName" required />
+                </mat-form-field>
+
+                <mat-form-field> 
+                    <mat-label for="billingCountry">Ország </mat-label>
+                    <input matInput id="billingCountry" type="text" formControlName="billingCountry" required />
+                </mat-form-field>
+
+                <mat-form-field> 
+                    <mat-label for="billingPostnumber">Irányítószám </mat-label>
+                    <input matInput id="billingPostnumber" type="text" formControlName="billingPostnumber" required />
+                </mat-form-field>
+
+                <mat-form-field> 
+                    <mat-label for="billingCity">Város </mat-label>
+                    <input matInput id="billingCity" type="text" formControlName="billingCity" required />
+                </mat-form-field>
+
+                <mat-form-field> 
+                    <mat-label for="billingAddress">Utca, házszám </mat-label>
+                    <input matInput id="billingAddress" type="text" formControlName="billingAddress" required />
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div *ngIf="errors.length !== 0" class="error">
+            <span *ngFor="let error of errors">{{error}}<br></span>
+        </div>
+    
+        <div> 
+            <button mat-raised-button color="primary" type="submit">Adatok módosítása</button>
+            <button mat-raised-button color="warn" (click)="deleteProfile()">Profil törlése</button>
+        </div>
+    </form>
+</div>

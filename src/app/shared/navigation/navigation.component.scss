@@ -1,0 +1,20 @@
+ul {
+    list-style-type: none;
+}
+
+.submenu li {
+    margin: 10px;
+}
+
+li:hover {
+    background-color: #a0a0a0;
+    cursor: pointer;
+}
+
+.submenu li:hover {
+    background-color: #7b7b7b;
+}
+
+.current_page {
+    text-decoration: underline red 2px;
+}

@@ -37,6 +37,7 @@
               "src/assets"
             ],
             "styles": [
+              "@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.scss"
             ],
             "scripts": []
@@ -103,10 +104,28 @@
               "src/assets"
             ],
             "styles": [
+              "@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.scss"
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "version": 2
+          },
+          "configurations": {
+            "production": {
+              "buildTarget": "tile-webshop:build:production",
+              "serveTarget": "tile-webshop:serve:production"
+            },
+            "development": {
+              "buildTarget": "tile-webshop:build:development",
+              "serveTarget": "tile-webshop:serve:development"
+            }
+          },
+          "defaultConfiguration": "production"
         }
       }
     }

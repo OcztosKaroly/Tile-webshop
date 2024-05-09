@@ -1,0 +1,49 @@
+<div>
+    <div class="filterOption">
+        <mat-form-field>
+            <mat-label>Szín </mat-label>
+            <mat-select [(ngModel)]="color" (selectionChange)="onSelectionChange($event)" multiple>
+                <mat-option value="barna">Barna</mat-option>
+                <mat-option value="fehér">Fehér</mat-option>
+                <mat-option value="fekete">Fekete</mat-option>
+                <mat-option value="kék">Kék</mat-option>
+                <mat-option value="piros">Piros</mat-option>
+                <mat-option value="szürke">Szürke</mat-option>
+                <mat-option value="zöld">Zöld</mat-option>
+                <mat-option value="egyéb">Egyéb</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+
+    <div class="filterOption">
+        <mat-form-field>
+            <mat-label>Méret </mat-label>
+            <mat-select [(ngModel)]="size" (selectionChange)="onSelectionChange($event)" multiple>
+                <mat-option value="30x60">30x60</mat-option>
+                <mat-option value="25x40">25x40</mat-option>
+                <mat-option value="20x60">20x60</mat-option>
+                <mat-option value="20x50">20x50</mat-option>
+                <mat-option value="20x30">20x30</mat-option>
+                <mat-option value="20x25">20x25</mat-option>
+                <mat-option value="20x20">20x20</mat-option>
+                <mat-option value="10x20">10x20</mat-option>
+                <mat-option value="egyéb">Egyéb</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+
+    <div class="filterOption">
+        <mat-form-field>
+            <mat-label>Hova </mat-label>
+            <mat-select [(ngModel)]="where" (selectionChange)="onSelectionChange($event)" multiple>
+                <mat-option value="konyha">Konyha</mat-option>
+                <mat-option value="fürdőszoba">Fürdőszoba</mat-option>
+                <mat-option value="nappali">Nappali</mat-option>
+                <mat-option value="előszoba">Előszoba</mat-option>
+                <mat-option value="folyosó">Folyosó</mat-option>
+                <mat-option value="kültér">Kültér</mat-option>
+                <mat-option value="egyéb">Egyéb</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+</div>

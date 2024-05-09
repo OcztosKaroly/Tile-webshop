@@ -1,0 +1,54 @@
+mat-sidenav-container {
+    background-color: #efb16a;
+    height: 100%;
+    font-size: 120%;
+}
+
+mat-sidenav {
+    background-color: #efb16a;
+    height: 100%;
+    padding-right: 30px;
+}
+
+mat-toolbar {
+    font-size: 120%;
+}
+
+.page_content {
+    margin: 20px 40px;
+}
+
+.navigation-items, .navigation-items .submenu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+li:hover, li:active {
+    cursor: pointer;
+    color: lightgray;
+}
+
+.dropdown .submenu {
+    color: white;
+    display: none;
+    right: 0;
+    position: absolute;
+    background-color: #000000;
+    border-radius: 0 0 8px 8px;
+    padding: 10px;
+    z-index: 20;
+}
+
+.dropdown:hover .submenu {
+    display: block;
+}
+
+.submenu li {
+    margin: 5px 0;
+    width: 90%;
+}
+
+.current_page {
+    text-decoration: underline red 2px;
+}

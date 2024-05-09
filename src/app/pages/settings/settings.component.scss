@@ -1,0 +1,68 @@
+mat-form-field {
+    width: 100%;
+}
+
+.container-bordered {
+    border: 3px solid black;
+    padding: 0 40px 20px 40px;
+    border-radius: 15px;
+    width: 50%;
+    margin: auto;
+    text-align: center;
+}
+
+@media only screen and (max-width: 600px) {
+    .container-bordered {
+        width: auto;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}
+
+.container-left-align {
+    text-align: left;
+    margin-bottom: 30px;
+}
+
+input, select {
+    margin-bottom: 10px;
+}
+
+.centered {
+    margin: auto;
+    text-align: center;
+    padding: 10px;
+}
+
+button {
+    margin: 10px 0 0 0;
+    font-size: 120%;
+}
+
+.selection {
+    width: 100%;
+    display: flex;
+}
+
+.selection label {
+    width: 33%;
+}
+
+.selection mat-select {
+    background-color: rgb(242, 242, 242);
+}
+
+.error {
+    color: red;
+    font-size: 85%;
+}
+
+button {
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+mat-radio-button {
+    margin-right: 30px;
+    margin-left: 30px;
+}

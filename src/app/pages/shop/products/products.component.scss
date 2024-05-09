@@ -1,0 +1,38 @@
+.container {
+    width: 100%;
+}
+
+.productCard {
+    padding: 20px;
+    width: 28%;
+}
+
+.card-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+img {
+    max-width: 100%;
+}
+
+@media (max-width: 950px) {
+    .productCard {
+        width: 40%;
+    }
+}
+
+@media (max-width: 650px) {
+    .productCard {
+        width: 95%;
+    }
+}
+
+.card_actions {
+    height: 100%;
+    padding: 5px;
+}
+
+.count_field, .add_button {
+    margin: 5px;
+}
