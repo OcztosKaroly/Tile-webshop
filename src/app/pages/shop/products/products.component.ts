@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Product } from '../../../shared/models/Product';
 import { ProductService } from '../../../shared/services/product.service';
 import { FilterService } from '../../../shared/services/filter.service';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { CartService } from '../../../shared/services/cart.service';
 
 @Component({
@@ -38,11 +38,17 @@ export class ProductsComponent implements OnDestroy {
     });
   }
 
-  getProductImageUrl(productId: string): string {
-    return 'https://firebasestorage.googleapis.com/v0/b/webkeret-tiles-webshop.appspot.com/o/images%2F'
-        + productId
-        + '.jpeg?alt=media';
+  getProductImageUrl(productId: string) {
+    return this.productService.loadImageById(productId);
+  
+    /*this.imageSubscription = this.productService.loadImageById(productId).subscribe(data => {
+      console.log(data);
+    });*/
   }
+
+  /*getProductImageUrl(productId: string): Observable<string> {
+    return this.productService.loadImageById(productId);
+  }*/
 
   private arrayIntersection(array1: Product[], array2: Product[], array3: Product[]) {
     if(array1.length === 0 || array2.length === 0 || array3.length === 0) {

@@ -1,5 +1,6 @@
-import { Injectable, Query } from '@angular/core';
-import { AngularFirestore, QueryFn } from '@angular/fire/compat/firestore';
+import { Injectable } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { Product } from '../models/Product';
 
 @Injectable({
@@ -8,7 +9,7 @@ import { Product } from '../models/Product';
 export class ProductService {
   collectionName = 'Products';
 
-  constructor(private afs: AngularFirestore) { }
+  constructor(private afs: AngularFirestore, private storage: AngularFireStorage) { }
 
   create(product: Product) {
     return this.afs.collection<Product>(this.collectionName).doc(product.id).set(product);
@@ -45,6 +46,13 @@ export class ProductService {
 
   getFilteredWheres(wheres: Array<any>) {
     return this.afs.collection<any>(this.collectionName, ref => ref.where('where', 'in', wheres)).valueChanges();
+  }
+
+  loadImageById(id: string): string {
+    return 'https://firebasestorage.googleapis.com/v0/b/webkeret-tiles-webshop.appspot.com/o/images%2F'
+        + id
+        + '.jpeg?alt=media';
+    //return this.storage.ref('images/' + id + '.jpeg').getDownloadURL();
   }
 
   update(product: Product) {
